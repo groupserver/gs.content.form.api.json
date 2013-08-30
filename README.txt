@@ -25,15 +25,15 @@ Currently this egg provides one class: GroupEndpoint.
 Features of GroupEndpoint
 =========================
 
- - All responses from GroupEndpoint pages are application/json.
- - Those who make a non-submission request to a GroupEndpoint page will
-receive a response that documents the purpose and parameters of the endpoint.
-The purpose is based on the label attribute borrowed from zope.formlib, and the
-documentation of parameters is based on the form's schema.
- - Validation of submissions to GroupEndpoint will actually check that the
-submitted data includes all required parameters.
+- All responses from GroupEndpoint pages are application/json.
+- Those who make a non-submission request to a GroupEndpoint page will
+  receive a response that documents the purpose and parameters of the endpoint.
+  The purpose is based on the label attribute borrowed from zope.formlib, and 
+  the documentation of parameters is based on the form's schema.
+- Validation of submissions to GroupEndpoint will actually check that the
+  submitted data includes all required parameters.
 - GroupEndpoint includes a helper method to generate a json response for
-submissions that generate validation errors.
+  submissions that generate validation errors.
 
 Using GroupEndpoint
 ===================
@@ -42,9 +42,9 @@ Where possible, I've tried to make subclassing GroupEndpoint as similar to
 subclassing GroupForm as possible. That said, subclasses of GroupEndpoint do
 need to define one attributes that subclasses of GroupForm do not:
 
- - interface: The interface schema of the form. It probably is possible to get
-the same information out of form_fields, but in my hacking I ended up pulling
-information directly from the interface.
+- interface: The interface schema of the form. It probably is possible to get
+  the same information out of form_fields, but in my hacking I ended up pulling
+  information directly from the interface.
 
 Subclasses of GroupEndpoint should use the same zope.formlib.action decorator
 as subclasses of GroupForm to name the methods that handle validation success
@@ -54,8 +54,8 @@ should set the prefix parameter of this decorator to an empty string.
 The following attribute from zope.formlib has a slightly different use on a
 GroupEndpoint page than a GroupForm page:
 
- - label: A documentation string that is displayed to those who request the 
-page without submitting data.
+- label: A documentation string that is displayed to those who request the 
+  page without submitting data.
 
 Finally, scripts submitting data to a GroupEndpoint endpoint will need to
 include the parameter 'submit' to indicate that they are submitting data
