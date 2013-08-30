@@ -27,9 +27,11 @@ Features of GroupEndpoint
 
 - All responses from GroupEndpoint pages are application/json.
 - Those who make a non-submission request to a GroupEndpoint page will
-  receive a response that documents the purpose and parameters of the endpoint.
-  The purpose is based on the label attribute borrowed from zope.formlib, and 
-  the documentation of parameters is based on the form's schema.
+  receive a response that documents the purpose, actions, and parameters of 
+  the endpoint. The purpose is based on the label attribute borrowed from 
+  zope.formlib. The actions are based on the use of the 
+  zope.formlib.form.action decorator in the subclass. The documentation of 
+  parameters is based on the form's schema.
 - Validation of submissions to GroupEndpoint will actually check that the
   submitted data includes all required parameters.
 - GroupEndpoint includes a helper method to generate a json response for
@@ -53,8 +55,8 @@ GroupEndpoint page than a GroupForm page:
   page without submitting data.
 
 Finally, scripts submitting data to a GroupEndpoint endpoint will need to
-include the parameter 'submit' to indicate that they are submitting data
-to be processed.
+include a parameter that indicates which action they are submitting. These
+actions are listed when non-submitting request is made to the endpoint.
 
 
 
