@@ -15,7 +15,7 @@ class GroupEndpoint(GroupForm):
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
 
     def __init__(self, group, request):
-        super(GroupApiJsonForm, self).__init__(group, request)
+        super(GroupEndpoint, self).__init__(group, request)
         self.prefix = ''
 
     @Lazy
@@ -35,7 +35,7 @@ class GroupEndpoint(GroupForm):
     def validate(self, action, data):
         # Super's validate method does not actually check that all required
         # fields are present in the posted data.
-        retval = super(GroupApiJsonForm, self).validate(action, data)
+        retval = super(GroupEndpoint, self).validate(action, data)
 
         missing_required_params = [parameter for parameter in
                                    self.required_endpoint_parameters
@@ -56,6 +56,6 @@ class GroupEndpoint(GroupForm):
         return retval
 
     def __call__(self, ignore_request=False):
-        retval = super(GroupApiJsonForm, self).__call__()
+        retval = super(GroupEndpoint, self).__call__()
         self.request.response.setHeader('Content-Type', 'application/json')
         return retval
