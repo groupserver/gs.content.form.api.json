@@ -19,11 +19,18 @@ class GroupEndpoint(GroupForm):
         self.prefix = ''
 
     @Lazy
+    def interfaces(self):
+        """The set of schema interfaces used by this endpoint"""
+        assert self.form_fields
+        retval = set([field.interface for field in self.form_fields])
+        return retval
+
+    @Lazy
     def endpoint_parameters(self):
         """ The list of parameters for this endpoint"""
-        assert self.interface
-        for name, value in getFieldsInOrder(self.interface):
-            yield ({"name": name, "value": value})
+        for interface in self.interfaces:
+            for name, value in getFieldsInOrder(interface):
+                yield ({"name": name, "value": value})
 
     @Lazy
     def required_endpoint_parameters(self):

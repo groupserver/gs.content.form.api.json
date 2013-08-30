@@ -39,12 +39,7 @@ Using GroupEndpoint
 ===================
 
 Where possible, I've tried to make subclassing GroupEndpoint as similar to
-subclassing GroupForm as possible. That said, subclasses of GroupEndpoint do
-need to define one attributes that subclasses of GroupForm do not:
-
-- interface: The interface schema of the form. It probably is possible to get
-  the same information out of form_fields, but in my hacking I ended up pulling
-  information directly from the interface.
+subclassing GroupForm as possible. 
 
 Subclasses of GroupEndpoint should use the same zope.formlib.action decorator
 as subclasses of GroupForm to name the methods that handle validation success
