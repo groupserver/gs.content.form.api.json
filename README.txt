@@ -10,7 +10,7 @@ Classes to make JSON based API endpoints based on GroupServer Forms
 :Date: 2013-08-30
 :Organization: `E-Democracy.org`_
 :Copyright: This document is licensed under a
-  `Creative Commons Attribution-Share Alike 3.0`_
+  `Creative Commons Attribution-Share Alike 3.0 License`_
   by `E-Democracy.org`_.
 
 Introduction
@@ -45,8 +45,7 @@ subclassing GroupForm as possible.
 
 Subclasses of GroupEndpoint should use the same zope.formlib.action decorator
 as subclasses of GroupForm to name the methods that handle validation success
-and failure. One important difference is that subclasses of GroupEndpoint
-should set the prefix parameter of this decorator to an empty string.
+and failure.
 
 The following attribute from zope.formlib has a slightly different use on a
 GroupEndpoint page than a GroupForm page:
@@ -70,5 +69,5 @@ Resources
 .. _GroupServer: http://groupserver.org/
 .. _E-Democracy.org: http://www.e-democracy.org
 .. _Bill Bushey: http://groupserver.org/p/wbushey
-.. _Creative Commons Attribution-Share Alike 3.0 New Zealand License:
-   http://creativecommons.org/licenses/by-sa/3.0/nz/
+.. _Creative Commons Attribution-Share Alike 3.0 License:
+   http://creativecommons.org/licenses/by-sa/3.0/
