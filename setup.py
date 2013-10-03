@@ -34,6 +34,7 @@ setup(name='gs.content.form.api.json',
     install_requires=[
         'setuptools',
         'gs.content.form',
+        'gs.group.base',
         # -*- Extra requirements: -*-
     ],
     entry_points="""
