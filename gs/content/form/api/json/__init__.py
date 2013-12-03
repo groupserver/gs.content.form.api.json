@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 from gs.content.form.form import SiteForm
 from gs.group.base.form import GroupForm
-from endpoint_mixin import EndpointMixin
+from .endpoint_mixin import EndpointMixin
 
 
 class SiteEndpoint(EndpointMixin, SiteForm):
@@ -18,5 +19,3 @@ class GroupEndpoint(EndpointMixin, GroupForm):
         endpoints.
     """
     pass
-
-
