@@ -15,7 +15,8 @@ setup(name='gs.content.form.api.json',
       "Environment :: Web Environment",
       "Framework :: Zope2",
       "Intended Audience :: Developers",
-      "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+      "License :: OSI Approved :: GNU General Public License v3 or later "
+          "(GPLv3+)",
       "Natural Language :: English",
       "Operating System :: POSIX :: Linux"
       "Programming Language :: Python",
@@ -28,17 +29,18 @@ setup(name='gs.content.form.api.json',
     license='GPL 3',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['gs', 'gs.content', 'gs.content.form',
-                        'gs.content.form.api'], 
+                        'gs.content.form.api'],
     include_package_data=True,
-    zip_safe=True,
+    zip_safe=False,
     install_requires=[
         'setuptools',
+        'zope.cachedescriptors',
+        'zope.schema',
+        'zope.formlib',
+        'Zope2',
         'gs.content.form',
         'gs.group.base',
-        # -*- Extra requirements: -*-
     ],
     entry_points="""
     # -*- Entry points: -*-
     """,)
-
-
