@@ -16,6 +16,8 @@ VALIDATION_ERROR = 100
 # with SiteForm or GroupForm inherited immediately after. E.g.:
 #      class Example(EndpointMixin, SiteForm):
 ###############################################################################
+
+
 class EndpointMixin(object):
     pageTemplateFileName = 'browser/templates/api_json_about.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
