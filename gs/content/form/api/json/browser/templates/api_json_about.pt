@@ -1,5 +1,5 @@
 {
-    <tal:block condition="view/label">"message": "<tal:block replace="view/label"></tal:block>",</tal:block>
+    <tal:block condition="view/label">"message": ["<tal:block replace="view/label"></tal:block>"],</tal:block>
     <tal:block condition="view/actions">"actions": {<tal:block repeat="action view/actions">
         "<tal:block replace="action/prefix">The action prefix</tal:block><tal:block replace="action/name">The action name</tal:block>": "<tal:block replace="action/label">Action description</tal:block>"<tal:block condition="not: repeat/action/end">,</tal:block></tal:block>
     },</tal:block>
