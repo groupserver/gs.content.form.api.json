@@ -33,7 +33,7 @@ class EndpointMixin(object):
         retval = set([field.interface for field in self.form_fields])
         return retval
 
-    @Lazy
+    @property
     def endpoint_parameters(self):
         """ The list of parameters for this endpoint"""
         for interface in self.interfaces:
@@ -50,6 +50,7 @@ class EndpointMixin(object):
     def validate(self, action, data):
         # Super's validate method does not actually check that all required
         # fields are present in the posted data.
+
         retval = super(EndpointMixin, self).validate(action, data)
 
         missing_required_params = [parameter for parameter in
@@ -59,7 +60,6 @@ class EndpointMixin(object):
             retval.append(WidgetInputError(missing_required_param['name'],
                           missing_required_param['value'].title,
                           RequiredMissing(missing_required_param['name'])))
-
         return retval
 
     def build_error_response(self, action, data, errors):
