@@ -1,15 +1,26 @@
-{
-    <tal:block condition="view/label">"message": ["<tal:block replace="view/label"></tal:block>"],</tal:block>
-    <tal:block condition="view/actions">"actions": {<tal:block repeat="action view/actions">
-        "<tal:block replace="action/prefix">The action prefix</tal:block><tal:block replace="action/name">The action name</tal:block>": "<tal:block replace="action/label">Action description</tal:block>"<tal:block condition="not: repeat/action/end">,</tal:block></tal:block>
-    },</tal:block>
-    "arguments": {<tal:block repeat="parameter view/endpoint_parameters">
-        "<tal:block replace="parameter/name">The parameter name</tal:block>": {
-            "Description": "<tal:block replace="python:parameter['value'].description.replace('&quot;',r'\&quot;')">Argument Description</tal:block>",
-            "Required": <tal:block replace="python:str(parameter['value'].required).lower()">True or False</tal:block><tal:block condition="parameter/value/default">,
-            "Default Value": "<tal:block replace="parameter/value/default"></tal:block>"</tal:block><tal:block condition="python: hasattr(parameter['value'], 'vocabulary') and parameter['value'].vocabulary">,
-            "Available Values": [<tal:block repeat="term parameter/value/vocabulary">
-                "<tal:block replace="term/value">Term Name</tal:block>"<tal:block condition="not: repeat/term/end">,</tal:block></tal:block>]</tal:block>
-        }<tal:block condition="not: repeat/parameter/end">,</tal:block></tal:block>
-    }
-}
+<tal:block xmlns:tal="http://xml.zope.org/namespaces/tal">{
+    <tal:block condition="view/errors">
+      "status": -1,
+      "message": [<tal:block repeat="error view/errors">
+      "<tal:block 
+        define="m python:error[1] + ': ' + error[2].doc() "
+        replace="python:m.replace('&quot;',r'\&quot;')">Message</tal:block>"<tal:block define="n repeat/error/number;"
+        condition="python:n != len(view.errors)">,</tal:block>
+      </tal:block> ]
+    </tal:block>
+    <tal:block condition="not:view/errors">
+      <tal:block condition="view/label">"message": ["<tal:block replace="view/status">status</tal:block>", "<tal:block replace="view/label"></tal:block>"],</tal:block>
+      <tal:block condition="view/actions">"actions": {<tal:block repeat="action view/actions">
+      "<tal:block replace="action/prefix">The action prefix</tal:block><tal:block replace="action/name">The action name</tal:block>": "<tal:block replace="action/label">Action description</tal:block>"<tal:block condition="not: repeat/action/end">,</tal:block></tal:block>
+      },</tal:block>
+      "arguments": {<tal:block repeat="parameter view/endpoint_parameters">
+      "<tal:block replace="parameter/name">The parameter name</tal:block>": {
+      "Description": "<tal:block replace="python:parameter['value'].description.replace('&quot;',r'\&quot;')">Argument Description</tal:block>",
+      "Required": <tal:block replace="python:str(parameter['value'].required).lower()">True or False</tal:block><tal:block condition="parameter/value/default">,
+      "Default Value": "<tal:block replace="parameter/value/default"></tal:block>"</tal:block><tal:block condition="python: hasattr(parameter['value'], 'vocabulary') and parameter['value'].vocabulary">,
+      "Available Values": [<tal:block repeat="term parameter/value/vocabulary">
+      "<tal:block replace="term/value">Term Name</tal:block>"<tal:block condition="not: repeat/term/end">,</tal:block></tal:block>]</tal:block>
+      }<tal:block condition="not: repeat/parameter/end">,</tal:block></tal:block>
+      }
+    </tal:block>
+}</tal:block>
