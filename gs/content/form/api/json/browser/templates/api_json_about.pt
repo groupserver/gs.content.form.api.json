@@ -2,7 +2,7 @@
     <tal:block condition="view/errors">
       "status": -1,
       "message": [<tal:block repeat="error view/errors">
-      "<tal:block 
+      "<tal:block
         define="m python:error[1] + ': ' + error[2].doc() "
         replace="python:m.replace('&quot;',r'\&quot;')">Message</tal:block>"<tal:block define="n repeat/error/number;"
         condition="python:n != len(view.errors)">,</tal:block>
