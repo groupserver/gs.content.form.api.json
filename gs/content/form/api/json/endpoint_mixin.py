@@ -12,12 +12,14 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-import json
+from __future__ import unicode_literals
+from json import dumps as to_json
 from zope.cachedescriptors.property import Lazy
 from zope.schema import getFieldsInOrder
 from zope.schema._bootstrapinterfaces import RequiredMissing
 from zope.formlib.interfaces import WidgetInputError
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
+from gs.core import to_ascii
 
 VALIDATION_ERROR = 100
 
@@ -80,10 +82,11 @@ class EndpointMixin(object):
             'status': VALIDATION_ERROR,
             'message': [unicode(error) for error in errors]
         }
-        retval = json.dumps(retdict, indent=4)
+        retval = to_json(retdict, indent=4)
         return retval
 
     def __call__(self, ignore_request=False):
         retval = super(EndpointMixin, self).__call__()
-        self.request.response.setHeader('Content-Type', 'application/json')
+        self.request.response.setHeader(to_ascii('Content-Type'),
+                                        to_ascii('application/json'))
         return retval
