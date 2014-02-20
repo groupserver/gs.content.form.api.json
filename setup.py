@@ -51,6 +51,7 @@ setup(name='gs.content.form.api.json',
         'zope.formlib',
         'Zope2',
         'gs.content.form',
+        'gs.core',
         'gs.group.base',
     ],
     entry_points="""
