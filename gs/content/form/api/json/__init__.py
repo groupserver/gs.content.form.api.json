@@ -12,8 +12,8 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-from __future__ import absolute_import
-from gs.content.form.form import SiteForm
+from __future__ import absolute_import, unicode_literals
+from gs.content.form.base import SiteForm
 from gs.group.base.form import GroupForm
 from .endpoint_mixin import EndpointMixin
 
