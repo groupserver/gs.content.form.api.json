@@ -12,17 +12,22 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+import codecs
 import os
 from setuptools import setup, find_packages
 from version import get_version
 
 version = get_version()
 
+with codecs.open('README.txt', encoding='utf-8') as f:
+    long_description = f.read()
+with codecs.open(os.path.join("docs", "HISTORY.txt"), encoding='utf-8') as f:
+    long_description += '\n' + f.read()
+
 setup(name='gs.content.form.api.json',
     version=version,
     description="Classes to make JSON based API endpoints based on Forms",
-    long_description=open("README.txt").read() + "\n" +
-                      open(os.path.join("docs", "HISTORY.txt")).read(),
+    long_description=long_description,
     classifiers=[
       "Development Status :: 1 - Planning",
       "Environment :: Web Environment",
@@ -30,14 +35,14 @@ setup(name='gs.content.form.api.json',
       "Intended Audience :: Developers",
       'License :: OSI Approved :: Zope Public License',
       "Natural Language :: English",
-      "Operating System :: POSIX :: Linux"
+      "Operating System :: POSIX :: Linux",
       "Programming Language :: Python",
       "Topic :: Software Development :: Libraries :: Python Modules",
       ],
-    keywords='',
+    keywords='form, json, group, site',
     author='Bill Bushey',
     author_email='bill.bushey@e-democracy.org',
-    url='http://www.e-democracy.org/',
+    url='https://source.iopen.net/groupserver/gs.content.form.api.json/',
     license='ZPL 2.1',
     packages=find_packages(exclude=['ez_setup']),
     namespace_packages=['gs', 'gs.content', 'gs.content.form',
@@ -50,7 +55,7 @@ setup(name='gs.content.form.api.json',
         'zope.schema',
         'zope.formlib',
         'Zope2',
-        'gs.content.form',
+        'gs.content.form.base',
         'gs.core',
         'gs.group.base',
     ],
