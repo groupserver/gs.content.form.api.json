@@ -3,3 +3,4 @@ recursive-include docs *
 include version.py
 include README.txt 
 include *.txt
+include *.rst
