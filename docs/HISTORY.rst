@@ -1,11 +1,12 @@
 Changelog
 =========
 
-2.1.1 (2015-04-07)
+2.1.1 (2015-04-17)
 ------------------
 
 * Naming the reStructuredText files as such
 * Using GitHub_ as the primary repository
+* Adding Sphinx documentation
 
 .. _GitHub: https://github.com/groupserver/gs.content.form.base
 
