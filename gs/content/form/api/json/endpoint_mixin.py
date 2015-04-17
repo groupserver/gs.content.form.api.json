@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-##############################################################################
+############################################################################
 #
-# Copyright © 2014 OnlineGroups.net and Contributors.
+# Copyright © 2014, 2015 OnlineGroups.net and Contributors.
 # All Rights Reserved.
 #
 # This software is subject to the provisions of the Zope Public License,
@@ -11,7 +11,7 @@
 # WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
 # FOR A PARTICULAR PURPOSE.
 #
-##############################################################################
+############################################################################
 from __future__ import unicode_literals
 from json import dumps as to_json
 from zope.cachedescriptors.property import Lazy
@@ -19,21 +19,26 @@ from zope.schema import getFieldsInOrder
 from zope.schema._bootstrapinterfaces import RequiredMissing
 from zope.formlib.interfaces import WidgetInputError
 from Products.Five.browser.pagetemplatefile import ZopeTwoPageTemplateFile
-from gs.core import to_ascii
 
+#:  The value of the staus if there is an error.
 VALIDATION_ERROR = 100
 
-###############################################################################
-# Classes that inherit EndpointMixin must have SiteForm or GroupFrom in their
-# inheritance tree above EndpointMixin.
+
+############################################################################
+# Classes that inherit EndpointMixin must have SiteForm or GroupFrom in
+# their inheritance tree above EndpointMixin.
 #
 # The recommended way to inherit EndpointMixin is via multiple inheritance,
 # with SiteForm or GroupForm inherited immediately after. E.g.:
 #      class Example(EndpointMixin, SiteForm):
-###############################################################################
+############################################################################
 
 
 class EndpointMixin(object):
+    '''The mixin for JSON API endponts
+
+:param object ctx: The Zope context.
+:param request: The Zope request.'''
     pageTemplateFileName = 'browser/templates/api_json_about.pt'
     template = ZopeTwoPageTemplateFile(pageTemplateFileName)
 
@@ -78,6 +83,14 @@ class EndpointMixin(object):
         return retval
 
     def build_error_response(self, action, data, errors):
+        '''Create a JSON error response
+
+:param function action: The action that caused the error.
+:param dict data: The data that was submitted.
+:param list errors: the list of errors.
+:returns: The error as a JSON object. The status will be
+    :const:`VALIDATION_ERROR`.
+:rtype: str'''
         retdict = {
             'status': VALIDATION_ERROR,
             'message': [unicode(error) for error in errors]
@@ -86,7 +99,11 @@ class EndpointMixin(object):
         return retval
 
     def __call__(self, ignore_request=False):
+        '''Render the page
+
+Renders the page, setting the content type to
+:mimetype:`application/json`'''
         retval = super(EndpointMixin, self).__call__()
-        self.request.response.setHeader(to_ascii('Content-Type'),
-                                        to_ascii('application/json'))
+        self.request.response.setHeader(b'Content-Type',
+                                        b'application/json')
         return retval
