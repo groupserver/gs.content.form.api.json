@@ -9,6 +9,17 @@ Contents:
    api
    HISTORY
 
+Resources
+=========
+
+- Documentation:
+  http://groupserver.readthedocs.org/projects/gscontentformapijson/
+- Code repository:
+  https://github.com/groupserver/gs.content.form.api.json
+- Questions and comments to
+  http://groupserver.org/groups/development
+- Report bugs at https://redmine.iopen.net/projects/groupserver
+
 Indices and tables
 ==================
 

@@ -25,6 +25,8 @@ Currently this egg provides two classes: SiteEndpoint and GroupEndpoint.
 Resources
 =========
 
+- Documentation:
+  http://groupserver.readthedocs.org/projects/gscontentformapijson/
 - Code repository:
   https://github.com/groupserver/gs.content.form.api.json
 - Questions and comments to
