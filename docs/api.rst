@@ -93,25 +93,3 @@ inherit from :class`EndpointMixin`.
    .. attribute:: siteInfo
 
       Information about the site.
-
-Example
-=======
-
-.. code-block:: python
-
-    class FooAPI(GroupEndpoint):
-        label = 'POST data to this URL to foo a member.'
-
-        def __init__(self, group, request):
-            super(FooAPI, self).__init__(group, request)
-
-        @formlib.action(label='Foo', prefix='', 
-                        failure='foo_failure')
-        def foo_success(self, action, data):
-          r = self.do_the_foo()
-          retval = to_json(r, indent=4)
-          return retval
-
-    def foo_failure(self, action, data, errors):
-        return self.build_error_response(action, data, errors)
-
