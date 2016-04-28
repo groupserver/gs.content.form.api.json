@@ -26,7 +26,7 @@ Resources
 =========
 
 - Documentation:
-  http://groupserver.readthedocs.org/projects/gscontentformapijson/
+  http://groupserver.readthedocs.io/projects/gscontentformapijson/
 - Code repository:
   https://github.com/groupserver/gs.content.form.api.json
 - Questions and comments to
